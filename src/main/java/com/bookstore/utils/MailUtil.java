@@ -20,6 +20,7 @@ public class MailUtil {
         //定义验证信息
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
+                // 成功开启POP3/SMTP服务,在第三方客户端登录时，密码框请输入以下授权码：cycdbwqhtfxmbhej
                 return new PasswordAuthentication("153887677@qq.com", "cycdbwqhtfxmbhej");
             }
         };
