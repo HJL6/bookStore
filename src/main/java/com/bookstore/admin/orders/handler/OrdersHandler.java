@@ -42,11 +42,7 @@ public class OrdersHandler {
     public String findOrderById(String id,Model model){
        List<OrderItem> items=adminOrdersService.findOrderById(id);
         model.addAttribute("items",items);
-   /*  for(OrderItem s:items){
-     System.out.println(s);
- }*/
         return "/admin/orders/view.jsp";
-
     }
 
     /*删除订单*/

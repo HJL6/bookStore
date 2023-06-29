@@ -18,7 +18,7 @@ public interface IProductService {
 
     Product findProductById(String id);
 
-    Notice findNoticeRecent();
+    List<Notice> findNoticeRecent();
 
     List<Product> findWeekHotProduct();
 }

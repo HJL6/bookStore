@@ -38,9 +38,9 @@ public class ProductServiceImpl implements IProductService {
     public Product findProductById(String id) {
         return productDao.selectProductById(id);
     }
-/*查询最新*/
+    /*查询最新*/
     @Override
-    public Notice findNoticeRecent() {
+    public List<Notice> findNoticeRecent() {
         return productDao.selectNoticeRecent();
     }
 

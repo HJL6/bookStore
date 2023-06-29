@@ -18,7 +18,6 @@ public class AdminUserHandler {
     @RequestMapping("/login")
     public String login(User user, HttpSession session, Model model){
 
-        System.out.println("deng"+user);
          User login_user=adminUserService.findUserByLogin(user);
          if(login_user!=null){
              //用户名和密码正确，且是超级用户
@@ -31,7 +30,7 @@ public class AdminUserHandler {
              }
 
          }else{
-             model.addAttribute("fail","用户名或密码错误，请重新输入！");
+             //model.addAttribute("fail","用户名或密码错误，请重新输入！");
              return "/admin/login/login.jsp";
          }
 

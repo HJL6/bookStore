@@ -60,7 +60,7 @@ public class ProduceHandler {
     /*首页显示页面*/
     @RequestMapping("/showIndex")
     public String showIndex(Model model){
-      Notice notice=  productService.findNoticeRecent();//查找最新的相关信息
+      List<Notice> notice=  productService.findNoticeRecent();//查找最新的相关信息
         model.addAttribute("n",notice);
 //        查询本周热卖
       List<Product> products=  productService.findWeekHotProduct();

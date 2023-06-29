@@ -26,7 +26,6 @@ public class UserHandler {
     @RequestMapping("/register")
     public String register(User user, String checkCode, HttpSession session, HttpServletRequest request){
         user.setActiveCode(IdUtils.getUUID());
-
         //从session中获取校验码
         String checkcode_session= (String) session.getAttribute("checkcode_session");
         //判断校验码是否正确
@@ -43,7 +42,6 @@ public class UserHandler {
             request.setAttribute("check_error","校验码错误，请重新输入");
              return  "/client/register.jsp";
         }
-
     }
     //用户激活
     @RequestMapping("/activeUser")
@@ -122,7 +120,7 @@ public class UserHandler {
               }
               //把查出来的信息放在session中
               session.setAttribute("login_user",login_user);
-              return "/client/myAccount.jsp";
+              return "/index.jsp";
 
           }else{//用户未激活
               request.setAttribute("login_error","用户未激活，请激活后使用");

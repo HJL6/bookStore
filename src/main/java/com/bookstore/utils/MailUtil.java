@@ -21,7 +21,7 @@ public class MailUtil {
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
                 // 成功开启POP3/SMTP服务,在第三方客户端登录时，密码框请输入以下授权码：cycdbwqhtfxmbhej
-                return new PasswordAuthentication("153887677@qq.com", "cycdbwqhtfxmbhej");
+                return new PasswordAuthentication("3040711564@qq.com", "capdomduooatdeje");
             }
         };
        //创建会话：和邮件服务器的会话
@@ -29,7 +29,7 @@ public class MailUtil {
         //设置发送邮件的发送信息
         Message message = new MimeMessage(session);
         //设置发送方
-        message.setFrom(new InternetAddress("153887677@qq.com"));
+        message.setFrom(new InternetAddress("3040711564@qq.com"));
         //设置接收方，即传过来的邮箱
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(email));
         //设置邮件的主题

@@ -18,7 +18,7 @@ public interface IProductDao {
 
     Product selectProductById(String id);
 
-    Notice selectNoticeRecent();
+    List<Notice> selectNoticeRecent();
 
     List<Product> selectWeekHotProduct();
 }

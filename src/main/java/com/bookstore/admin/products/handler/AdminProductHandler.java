@@ -51,7 +51,7 @@ public class AdminProductHandler {
     @RequestMapping("/addProduct")
     public String addProduct(Product product, MultipartFile upload, HttpSession session) throws IOException {
         //保存图片
-        String path1="C:\\Users\\yaya\\Desktop\\bookstore\\src\\main\\webapp\\productImg";
+        String path1="F:\\Java\\java项目管理\\GraduationWork\\book-store\\src\\main\\webapp\\productImg";
         String path=session.getServletContext().getRealPath("/productImg");
         File file=new File(path);
         if(!file.exists()){
@@ -148,28 +148,21 @@ public class AdminProductHandler {
 
         //创建excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
-        //创建excel中的sheet，在wb的基础上创建表
         HSSFSheet sheet = wb.createSheet(sheetName);
-        //创建sheet的第一行，在sheet的基础上创建行，索引从0开始
         HSSFRow row1 = sheet.createRow(0);
-        //创建第一行的第一个单元格
         HSSFCell cell = row1.createCell(0);
-        //合并第一行的两个单元格，参数是CellRangeAddress，对象的参数是第一行，最后一行，第一列，最后一列
         sheet.addMergedRegion(new CellRangeAddress(0,0,0,1));
         cell.setCellValue(titleName);
-        //创建第二行，对应columnName = {"商品名称","商品销量"};
         HSSFRow row = sheet.createRow(1);
         for (int i = 0;i<2;i++){
             row.createCell(i).setCellValue((columnName[i]));
         }
-        //创建第三行及以下，数据行
         for (int i = 0;i<dataList.length;i++){//二维数组的长度就是行的长度
             row = sheet.createRow(i+2);
             for (int j = 0;j<2;j++){
                 row.createCell(j).setCellValue(dataList[i][j]);
             }
         }
-
         String fileName = filename + ".xls";
         response.setContentType("application/ms-excel;charset=UTF-8");//设置响应回去的响应内容
         response.setHeader("content-Disposition","attachment;filename="+processFileName(request,fileName));

@@ -19,8 +19,8 @@ public class UserServiceImpl implements IUserService {
   IUserDao userDao;
     @Override
     public int addUser(User user, HttpServletRequest request) {
-      String emailMsg="感谢您注册网上书城，请点击"+
-              "<a href='http://localhost:8080/"+request.getContextPath()+"/client/user/activeUser?activeCode="+user.getActiveCode()+"'>激活</a>后使用";
+      String emailMsg="感谢您注册网上书城，请复制该地址=>localhost:8080"+
+              request.getContextPath()+"/client/user/activeUser?activeCode="+user.getActiveCode()+"<=进行激活后使用";
       try {
         MailUtil.sendMail(user.getEmail(),emailMsg);//两个参数：第一个往哪个邮箱发邮件，即注册的邮件，第二个邮件的内容
       } catch (MessagingException e) {

@@ -39,6 +39,9 @@ public class OrderHandler {
         order.setId(IdUtils.getUUID());
         //从session中获取登录用户，也就是提交订单的用户
         order.setUser((User) session.getAttribute("login_user"));
+        if(session.getAttribute("login_user")==null){
+            return "/client/login.jsp";
+        }
         //先获取购物车
        Map<Product,Integer> cart= (Map<Product, Integer>) session.getAttribute("cart");
         orderService.CreateOrder(order,cart);
@@ -127,9 +130,11 @@ public class OrderHandler {
         return "redirect:/client/paysuccess.jsp";
        // out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
     }else {
+        String order_id = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+        orderService.paySuccess(order_id);
         return "redirect:/client/paysuccess.jsp";
-      //return "redirect:/client/fail.jsp";
-       // out.println("验签失败");
+        //System.out.println("验签失败");
+        //return "redirect:/client/fail.jsp";
     }
 
  }
